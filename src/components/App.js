@@ -32,7 +32,7 @@ class App extends Component {
       return (
       <div key={key}>
         <h2>{post.title}</h2>
-        <p>{post.body}</p>
+        <p>{renderHTML(post.body)}</p>
       </div>
       );
    });
@@ -67,7 +67,9 @@ render() {
          type="text" 
          name="title" 
          placeholder="City"
-         onChange={this.onInputChange} 
+         onChange={(e) =>{
+           this.setState({ title: e.target.value });
+         }} 
          ref="title" 
          className="form-control" 
          />
@@ -78,7 +80,7 @@ render() {
           modules={App.modules}
           formats={App.formats}
           value={this.state.body}
-          placeholder="Body" 
+          placeholder="Topic" 
           onChange={this.onHandleChange} 
         />
         </div>
