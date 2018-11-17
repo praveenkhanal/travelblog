@@ -13,9 +13,11 @@ class App extends Component {
       body: '',
       posts: {}
     };
+    
     //bind
     this.onHandleChange = this.onHandleChange.bind(this);
     this.onHandleSubmit = this.onHandleSubmit.bind(this);
+    this.renderPosts = this.renderPosts.bind(this); 
   }
   //lifecycle
   componentDidMount(){
@@ -25,6 +27,7 @@ class App extends Component {
       });
     });
   }
+
 
   //render posts from firebase
   renderPosts(){
@@ -37,7 +40,7 @@ class App extends Component {
       );
    });
    }
-
+  
   onHandleChange(e) {
     this.setState({ body: e });
     console.log(this.state.body)
@@ -56,6 +59,30 @@ class App extends Component {
     });
   }
 
+  // 
+//  onClickDelete(e) {
+//    e.preventDefault();
+//    const post = {
+//     title: this.state.title,
+//     body: this.state.body
+//   };
+//   database.remove(post);
+//     this.setState({
+//       title: '',
+//       body: ''
+//     });
+//   }
+  //   // return (
+  //     // <div className="card mb-5">
+  //       // {/* <div className="card-body">
+  //         <div style={{overflow: 'hidden'}}>
+  //           <h4 className="mb-4 float-left">{contact.firstName} {contact.lastName}</h4> */}
+          
+
+  //         //  <button onClick={onClickDelete} id={contact.id} className="btn btn-danger btn-sm float-right">delete</button>
+  //         // </div>
+
+  // // 
 
 render() {
   return (
@@ -85,6 +112,7 @@ render() {
         />
         </div>
         <button className="btn btn-primary">Post</button>
+        <button className="btn btn-warning">Delete</button>
         </form>
       <br />
       {this.renderPosts()}
